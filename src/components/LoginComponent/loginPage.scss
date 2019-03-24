@@ -1,0 +1,15 @@
+.nav-bar-grid {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  grid-template-columns: repeat(10, 1fr);
+  display: grid;
+  background-color: black;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  .item1,
+  .item2,
+  .item3,
+  .item4,
+  .item5 {
+    color: white;
+  }
+}
