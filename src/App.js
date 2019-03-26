@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
-import "./App.css";
+import "./App.scss";
+import "./index.css";
+import NavBar from "./components/NavBarComponent";
+import LoginPage from "./components/LoginComponent";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Button>Hello there</Button>
+        <NavBar />
+        <div className="body">
+          <LoginPage />
+        </div>
       </div>
     );
   }
