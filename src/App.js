@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "./App.scss";
 import "./index.css";
-import NavBar from "./components/NavBarComponent";
 import LoginPage from "./components/LoginComponent";
+import Header from "./components/HeaderComponent/Header";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <Header />
         <div className="body">
           <LoginPage />
         </div>
