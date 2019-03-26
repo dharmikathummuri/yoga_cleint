@@ -4,11 +4,18 @@ import { Form, Button } from "react-bootstrap";
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { submitted: false };
+    this.state = { submitted: false, emailName: "", passwordName: "" };
+    this.handleChange = this.handleChange.bind(this);
   }
   submitForm = () => {
     this.setState({ submitted: true });
   };
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value
+    });
+  }
+
   render() {
     const { submitted } = this.state;
     return (
@@ -22,7 +29,10 @@ class LoginPage extends Component {
                   <Form.Control
                     className="email-text"
                     type="email"
+                    name="emailName"
                     placeholder="Enter email"
+                    value={this.state.emailName}
+                    onChange={this.handleChange}
                   />
                   <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
@@ -36,7 +46,10 @@ class LoginPage extends Component {
                   <Form.Control
                     className="password"
                     type="password"
+                    name="passwordName"
                     placeholder="Enter Password"
+                    value={this.state.passwordName}
+                    onChange={this.handleChange}
                   />
                   <Form.Text className="text-muted">
                     Password should contain at leass one uppercase
