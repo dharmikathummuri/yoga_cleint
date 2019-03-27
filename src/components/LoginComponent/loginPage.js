@@ -8,13 +8,30 @@ class LoginPage extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   submitForm = () => {
+    console.log("in here");
     this.setState({ submitted: true });
+  };
+  register = () => {
+    console.log("object");
+    this.props.history.push("/register");
   };
   handleChange({ target }) {
     this.setState({
       [target.name]: target.value
     });
   }
+  renderButtons = () => {
+    return (
+      <div className="login-button">
+        <Button variant="primary" type="submit" onClick={this.submitForm}>
+          Login
+        </Button>
+        <Button variant="success" type="submit" onClick={this.register}>
+          Register
+        </Button>
+      </div>
+    );
+  };
 
   render() {
     const { submitted } = this.state;
@@ -22,7 +39,7 @@ class LoginPage extends Component {
       <div className="parent">
         {!submitted && (
           <div className="Login-page">
-            <Form onSubmit={this.submitForm}>
+            <Form>
               <div className="email-input">
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
@@ -52,16 +69,12 @@ class LoginPage extends Component {
                     onChange={this.handleChange}
                   />
                   <Form.Text className="text-muted">
-                    Password should contain at leass one uppercase
+                    Password should contain at least one uppercase
                     <br /> letter and one special character.
                   </Form.Text>
                 </Form.Group>
               </div>
-              <div className="login-button">
-                <Button variant="primary" type="submit">
-                  Login
-                </Button>
-              </div>
+              {this.renderButtons()}
             </Form>
           </div>
         )}
