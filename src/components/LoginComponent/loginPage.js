@@ -12,7 +12,6 @@ class LoginPage extends Component {
     this.setState({ submitted: true });
   };
   register = () => {
-    console.log("object");
     this.props.history.push("/register");
   };
   handleChange({ target }) {
