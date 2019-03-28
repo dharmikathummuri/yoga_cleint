@@ -5,11 +5,11 @@ class Register extends Component {
   register = () => {
     console.log("in hereeeeee");
   };
-  registerButton = () => {
+  renderRegisterButton = () => {
     return (
       <div className="login-button">
         <Button variant="success" type="submit">
-          Register
+          REGISTER
         </Button>
       </div>
     );
@@ -23,7 +23,7 @@ class Register extends Component {
             ref="input1"
             type="radio"
             name="radioButtonSet"
-            value="input1"
+            value="Trainee"
             standalone="true"
             defaultChecked
           />
@@ -34,7 +34,7 @@ class Register extends Component {
             ref="input2"
             type="radio"
             name="radioButtonSet"
-            value="input2"
+            value="Instructor"
             standalone="true"
           />
         </div>
@@ -44,7 +44,7 @@ class Register extends Component {
   render() {
     return (
       <div className="register-class">
-        <Form onSubmit={this.register}>
+        <Form>
           <div className="first-name-input">
             <Form.Group controlId="firstName">
               <Form.Label>First Name</Form.Label>
@@ -53,6 +53,7 @@ class Register extends Component {
                 type="text"
                 name="firstName"
                 placeholder="Enter Your First Name"
+                required
               />
             </Form.Group>
           </div>
@@ -65,6 +66,7 @@ class Register extends Component {
                 type="text"
                 name="lastName"
                 placeholder="Enter Your Last Name"
+                required
               />
             </Form.Group>
           </div>
@@ -76,6 +78,7 @@ class Register extends Component {
                 type="email"
                 name="emailId"
                 placeholder="Enter Your Email Id"
+                required
               />
             </Form.Group>
           </div>
@@ -87,6 +90,7 @@ class Register extends Component {
                 type="text"
                 name="PhNo"
                 placeholder="Enter Your Phone Number"
+                required
               />
             </Form.Group>
           </div>
@@ -98,11 +102,12 @@ class Register extends Component {
                 type="password"
                 name="password"
                 placeholder="Enter Your Password"
+                required
               />
             </Form.Group>
           </div>
           {this.renderRadioButtons()}
-          {this.registerButton()}
+          {this.renderRegisterButton()}
         </Form>
       </div>
     );
