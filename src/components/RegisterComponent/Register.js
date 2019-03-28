@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import "./Register.scss";
 import { Form, ButtonGroup, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/Register/RegisterActions.js";
 class Register extends Component {
-  register = () => {
-    console.log("in hereeeeee");
+  constructor(props) {
+    super(props);
+    console.log("props", props);
+  }
+  register = async () => {
+    await this.props.registerUser("dharmika");
+    console.log("this.state", this.props);
   };
   renderRegisterButton = () => {
     return (
       <div className="login-button">
-        <Button variant="success" type="submit">
+        <Button variant="success" onClick={this.register}>
           REGISTER
         </Button>
       </div>
@@ -113,5 +120,9 @@ class Register extends Component {
     );
   }
 }
-
-export default Register;
+export default connect(
+  state => ({
+    registerdUser: state.registerReducer.result
+  }),
+  { registerUser }
+)(Register);

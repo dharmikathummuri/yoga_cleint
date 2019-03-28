@@ -1,7 +1,10 @@
 import { REGISTER_USER } from "../Constants";
 
-export const registerUser = async () => {
+export const registerUser = something => {
   try {
-	  const addUser = await 
-  } catch (e) {}
+    const addUser = "do something " + something;
+    return { type: REGISTER_USER, payload: addUser };
+  } catch (e) {
+    console.error(e);
+  }
 };
