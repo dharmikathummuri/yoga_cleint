@@ -6,11 +6,25 @@ import { registerUser } from "../../actions/Register/RegisterActions.js";
 class Register extends Component {
   constructor(props) {
     super(props);
-    console.log("props", props);
+    this.state = {
+      firstName: "",
+      lastName: "",
+      emailName: "",
+      phno: "",
+      password: ""
+    };
+    this.handleChange = this.handleChange.bind(this);
   }
-  register = async () => {
-    await this.props.registerUser("dharmika");
-    console.log("this.state", this.props);
+  register = () => {
+    const { firstName, lastName, emailName, phno, password } = this.state;
+    let build_params = {
+      fname: firstName,
+      lname: lastName,
+      phno: phno,
+      email: emailName,
+      password: password
+    };
+    this.props.registerUser(build_params);
   };
   renderRegisterButton = () => {
     return (
@@ -21,6 +35,13 @@ class Register extends Component {
       </div>
     );
   };
+
+  handleChange({ target }) {
+    this.setState({
+      [target.name]: target.value
+    });
+  }
+
   renderRadioButtons = () => {
     return (
       <ButtonGroup className="button-flex">
@@ -61,6 +82,8 @@ class Register extends Component {
                 name="firstName"
                 placeholder="Enter Your First Name"
                 required
+                value={this.state.firstName}
+                onChange={this.handleChange}
               />
             </Form.Group>
           </div>
@@ -74,6 +97,8 @@ class Register extends Component {
                 name="lastName"
                 placeholder="Enter Your Last Name"
                 required
+                value={this.state.lastName}
+                onChange={this.handleChange}
               />
             </Form.Group>
           </div>
@@ -83,9 +108,11 @@ class Register extends Component {
               <Form.Control
                 className="email-id"
                 type="email"
-                name="emailId"
+                name="emailName"
                 placeholder="Enter Your Email Id"
                 required
+                value={this.state.emailName}
+                onChange={this.handleChange}
               />
             </Form.Group>
           </div>
@@ -94,10 +121,12 @@ class Register extends Component {
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 className="last-name-text"
-                type="text"
-                name="PhNo"
+                type="number"
+                name="phno"
                 placeholder="Enter Your Phone Number"
                 required
+                value={this.state.phno}
+                onChange={this.handleChange}
               />
             </Form.Group>
           </div>
@@ -110,6 +139,8 @@ class Register extends Component {
                 name="password"
                 placeholder="Enter Your Password"
                 required
+                value={this.state.password}
+                onChange={this.handleChange}
               />
             </Form.Group>
           </div>
